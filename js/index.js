@@ -369,7 +369,7 @@ S.Dot = function (x, y) {
   this.p = new S.Point({
     x: x,
     y: y,
-    z: 6,
+    z: 7,
     a: 1,
     h: 0
   });
