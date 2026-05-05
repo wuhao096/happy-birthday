@@ -96,7 +96,7 @@ S.UI = (function () {
       currentAction,
       resizeTimer,
       time,
-      maxShapeSize = 60,
+      maxShapeSize = 45,
       firstAction = true,
       sequence = [],
       cmd = '#';
@@ -206,7 +206,7 @@ S.UI = (function () {
         default:
           S.Shape.switchShape(S.ShapeBuilder.letter(current[0] === cmd ? 'What?' : current));
       }
-    }, 3000, sequence.length);
+    }, 2000, sequence.length);
   }
 
   function checkInputWidth(e) {
@@ -369,12 +369,12 @@ S.Dot = function (x, y) {
   this.p = new S.Point({
     x: x,
     y: y,
-    z: 7,
+    z: 6,
     a: 1,
     h: 0
   });
 
-  this.e = 0.04;
+  this.e = 0.0;
   this.s = true;
 
   this.c = new S.Color(255, 255, 255, this.p.a);
