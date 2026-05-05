@@ -23,7 +23,7 @@ var S = {
     if (i !== -1) {
       S.UI.simulate(decodeURI(action).substring(i + 3));
     } else {
-      S.UI.simulate('|#countdown 3||漂亮女孩|祝你|生日快乐|愿时光 温柔以待|愿余生 平安顺遂|眼里有星光|心中有暖阳|生活不慌不忙|岁岁年年皆安康|永远明媚善良|永远天真可爱|不惧岁月|不负韶华|所求皆所愿|所行皆坦途|每一天都被幸福环绕|新的一岁|暴富暴美|无忧无虑|永远做小公主|生日快乐  专属于你|🎂❤|#rectangle|');
+      S.UI.simulate('|#countdown 3||宝藏女孩|生日快乐|新的一岁|按时长大|永远可爱|永远被偏爱|不慌不忙|岁岁安康|暴富变美|好运常在|烦恼散尽|一路生花|永远做小公主|🎂❤|#rectangle|');
     }
 
     S.Drawing.loop(function () {
