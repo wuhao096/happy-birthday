@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
 
 <head>
@@ -20,23 +20,14 @@
 </head>
 
 <body>
-	<audio id="bgm" src="HappyBirthday.mp3" loop>
-	<canvas id="canvas" style="position:absolute;width:100%;height:100%;z-index:8888"></canvas>
-	<canvas style="position:absolute;width:100%;height:100%;z-index:9999" class="canvas"></canvas>
-	<div class="overlay">
-		<div class="tabs">
-			<div class="tabs-labels"><span class="tabs-label">Commands</span><span class="tabs-label">Info</span><span
-					class="tabs-label">Share</span></div>
+	<!-- 音乐：正确闭合 + 路径正确 -->
+	<audio id="bgm" src="HappyBirthday.mp3" loop></audio>
 
-			<div class="tabs-panels">
-				<ul class="tabs-panel commands">
-				</ul>
-			</div>
-		</div>
-	</div>
+	<!-- 画布 -->
+	<canvas id="canvas" style="position:absolute;width:100%;height:100%;z-index:8888"></canvas>
+
 	<script>
 		function initVars() {
-
 			pi = Math.PI;
 			ctx = canvas.getContext("2d");
 			canvas.width = canvas.clientWidth;
@@ -64,7 +55,6 @@
 		}
 
 		function rasterizePoint(x, y, z) {
-
 			var p, d;
 			x -= playerX;
 			y -= playerY;
@@ -98,36 +88,25 @@
 		}
 
 		function spawnSeed() {
-
 			seed = new Object();
 			seed.x = -50 + Math.random() * 100;
 			seed.y = 25;
 			seed.z = -50 + Math.random() * 100;
 			seed.vx = .1 - Math.random() * .2;
-			seed.vy = -1.5;//*(1+Math.random()/2);
+			seed.vy = -1.5;
 			seed.vz = .1 - Math.random() * .2;
 			seed.born = frames;
 			seeds.push(seed);
 		}
 
 		function splode(x, y, z) {
-
 			t = 5 + parseInt(Math.random() * 150);
 			sparkV = 1 + Math.random() * 2.5;
 			type = parseInt(Math.random() * 3);
 			switch (type) {
-				case 0:
-					pic1 = parseInt(Math.random() * 10);
-					break;
-				case 1:
-					pic1 = parseInt(Math.random() * 10);
-					do { pic2 = parseInt(Math.random() * 10); } while (pic2 == pic1);
-					break;
-				case 2:
-					pic1 = parseInt(Math.random() * 10);
-					do { pic2 = parseInt(Math.random() * 10); } while (pic2 == pic1);
-					do { pic3 = parseInt(Math.random() * 10); } while (pic3 == pic1 || pic3 == pic2);
-					break;
+				case 0: pic1 = parseInt(Math.random() * 10); break;
+				case 1: pic1 = parseInt(Math.random() * 10); do { pic2 = parseInt(Math.random() * 10); } while (pic2 == pic1); break;
+				case 2: pic1 = parseInt(Math.random() * 10); do { pic2 = parseInt(Math.random() * 10); } while (pic2 == pic1); do { pic3 = parseInt(Math.random() * 10); } while (pic3 == pic1 || pic3 == pic2); break;
 			}
 			for (m = 1; m < t; ++m) {
 				spark = new Object();
@@ -140,9 +119,7 @@
 				spark.vy = Math.cos(p2) * v;
 				switch (type) {
 					case 0: spark.img = sparkPics[pic1]; break;
-					case 1:
-						spark.img = sparkPics[parseInt(Math.random() * 2) ? pic1 : pic2];
-						break;
+					case 1: spark.img = sparkPics[parseInt(Math.random() * 2) ? pic1 : pic2]; break;
 					case 2:
 						switch (parseInt(Math.random() * 3)) {
 							case 0: spark.img = sparkPics[pic1]; break;
@@ -168,7 +145,6 @@
 		}
 
 		function doLogic() {
-
 			if (seedTimer < frames) {
 				seedTimer = frames + seedInterval * Math.random() * 10;
 				spawnSeed();
@@ -224,7 +200,6 @@
 		}
 
 		function rgb(col) {
-
 			var r = parseInt((.5 + Math.sin(col) * .5) * 16);
 			var g = parseInt((.5 + Math.cos(col) * .5) * 16);
 			var b = parseInt((.5 - Math.sin(col) * .5) * 16);
@@ -232,7 +207,6 @@
 		}
 
 		function draw() {
-
 			ctx.clearRect(0, 0, cx * 2, cy * 2);
 
 			ctx.fillStyle = "#ff8";
@@ -301,7 +275,6 @@
 		}
 
 		function frame() {
-
 			if (frames > 100000) {
 				seedTimer = 0;
 				frames = 0;
@@ -322,13 +295,14 @@
 		initVars();
 		frame();
 	</script>
-	<script src="js/index.js"></script>
-    <script>
-    document.addEventListener('click', function() {
-      const bgm = document.getElementById('bgm');
-      bgm.play().catch(err => {});
-    }, { once: true });
-    </script>
+
+	<!-- 点击播放音乐 -->
+	<script>
+	document.addEventListener('click', function() {
+		const bgm = document.getElementById('bgm');
+		bgm.play().catch(err => {});
+	}, { once: true });
+	</script>
 </body>
 
 </html>
