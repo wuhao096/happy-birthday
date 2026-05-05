@@ -323,7 +323,13 @@
 		frame();
 	</script>
 	<script src="js/index.js"></script>
-
+    <script>
+    // 点一下屏幕就播放音乐
+    document.addEventListener('click', function() {
+      const bgm = document.getElementById('bgm');
+      bgm.play().catch(err => {});
+    }, { once: true });
+    </script>
 </body>
 
 </html>
