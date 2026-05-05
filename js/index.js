@@ -96,7 +96,7 @@ S.UI = (function () {
       currentAction,
       resizeTimer,
       time,
-      maxShapeSize = 30,
+      maxShapeSize = 60,
       firstAction = true,
       sequence = [],
       cmd = '#';
@@ -369,7 +369,7 @@ S.Dot = function (x, y) {
   this.p = new S.Point({
     x: x,
     y: y,
-    z: 5,
+    z: 7,
     a: 1,
     h: 0
   });
@@ -477,7 +477,7 @@ S.Dot.prototype = {
 
 
 S.ShapeBuilder = (function () {
-  var gap = 13,
+  var gap = 10,
       shapeCanvas = document.createElement('canvas'),
       shapeContext = shapeCanvas.getContext('2d'),
       fontSize = 500,
